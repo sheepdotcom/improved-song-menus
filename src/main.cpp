@@ -6,7 +6,7 @@ using namespace geode::prelude;
 class $modify(MySongWidget, CustomSongWidget) {
 	void updateButtons() {
 		if (this->m_customSongID == 0 && !this->m_isRobtopSong && this->m_songs.size() == 0) return;
-		geode::log::debug("{}", this->m_unkBool2);
+		geode::log::debug("{}", this->m_showSelectSongBtn);
 		auto undownloadedAsset = false;
 		if (this->m_songs.size() > 0) {
 			for (auto song : this->m_songs) {
@@ -42,14 +42,15 @@ class $modify(MySongWidget, CustomSongWidget) {
 			this->m_deleteBtn->setPosition(ccp(-147.5f, -160.f));
 			this->m_downloadBtn->setPosition(ccp(-147.5f, -160.f));
 
-			this->m_songLabel->limitLabelWidth((235.f - (this->m_songLabel->getPositionX() + 150)) / 2, 0.5f, 0.01f);
-			this->m_songIDLabel->limitLabelWidth(185.0f, 0.6f, 0.01f);
-			auto pos = this->m_songLabel->getPositionX() + this->m_songLabel->getScaledContentWidth() - 280.f;
-			this->m_artistLabel->limitLabelWidth(-250 - pos, 0.5f, 0.01f);
-			this->m_moreBtn->setContentSize(ccp(this->m_artistLabel->getScaledContentWidth(), 16.f));
-			this->m_artistLabel->setPosition(this->m_moreBtn->getContentSize() / 2);
-			this->m_moreBtn->setPositionX(pos + (this->m_moreBtn->getScaledContentWidth() / 2));
-
+			if (this->m_showSelectSongBtn) {
+				this->m_songLabel->limitLabelWidth((235.f - (this->m_songLabel->getPositionX() + 150)) / 2, 0.5f, 0.01f);
+				this->m_songIDLabel->limitLabelWidth(185.0f, 0.6f, 0.01f);
+				auto pos = this->m_songLabel->getPositionX() + this->m_songLabel->getScaledContentWidth() - 280.f;
+				this->m_artistLabel->limitLabelWidth(-250 - pos, 0.5f, 0.01f);
+				this->m_moreBtn->setContentSize(ccp(this->m_artistLabel->getScaledContentWidth(), 16.f));
+				this->m_artistLabel->setPosition(this->m_moreBtn->getContentSize() / 2);
+				this->m_moreBtn->setPositionX(pos + (this->m_moreBtn->getScaledContentWidth() / 2));
+			}
 			//Update the one in levelinfo too
 			if (auto levelInfo = static_cast<LevelInfoLayer*>(CCDirector::sharedDirector()->getRunningScene()->getChildByID("LevelInfoLayer"))) {
 				geode::log::debug("updating levelInfo");
