@@ -1,0 +1,21 @@
+{
+	"geode": "3.0.0-beta.1",
+	"gd": {
+		"win": "2.206",
+		"android": "2.206",
+		"mac": "2.206",
+		"ios": "2.206"
+	},
+	"id": "sheepdotcom.improved-song-menus",
+	"name": "Improved Song Menus",
+	"version": "v0.1.0",
+	"developer": "sheepdotcom",
+	"description": "A simple mod that improves various menus related to songs!",
+	"dependencies": [
+		{
+			"id": "geode.node-ids",
+			"version": ">=1.12.0",
+			"importance": "required"
+		}
+	]
+}
