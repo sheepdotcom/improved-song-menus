@@ -64,9 +64,6 @@ class $modify(MySongWidget, CustomSongWidget) {
 		}
 	}
 
-	void fixMultiAssetSize() {
-
-	}
 	void deleteSong() {
 		CustomSongWidget::deleteSong();
 		geode::log::debug("deleteSong");
@@ -126,6 +123,10 @@ class $modify(MySongWidget, CustomSongWidget) {
 	void songStateChanged() {
 		CustomSongWidget::songStateChanged();
 		geode::log::debug("songStateChanged");
+	}
+	void loadSongInfoFinished(SongInfoObject* p0) {
+		CustomSongWidget::loadSongInfoFinished(p0);
+		geode::log::debug("loadSongInfoFinished {}", p0->m_fileSize);
 	}
 	bool init(SongInfoObject* songInfo, CustomSongDelegate* songDelegate, bool showSongSelect, bool showPlayMusic, bool showDownload, bool isRobtopSong, bool unkBool, bool isMusicLibrary, int unk) {
 		if (!CustomSongWidget::init(songInfo, songDelegate, showSongSelect, showPlayMusic, showDownload, isRobtopSong, unkBool, isMusicLibrary, unk)) return false;
