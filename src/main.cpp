@@ -15,7 +15,7 @@ class $modify(MySongWidget, CustomSongWidget) {
 				}
 			}
 		}
-		else if (!MusicDownloadManager::sharedState()->isSongDownloaded(this->m_customSongID)) {
+		else if (!MusicDownloadManager::sharedState()->isSongDownloaded(this->m_customSongID) && !this->m_isRobtopSong) {
 			undownloadedAsset = true;
 		}
 		if (this->m_sfx.size() > 0) {
