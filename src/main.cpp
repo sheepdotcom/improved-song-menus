@@ -32,8 +32,10 @@ class $modify(MySongWidget, CustomSongWidget) {
 		}
 		else {
 			//geode::log::debug("all assets downloaded!");
-			this->m_deleteBtn->setVisible(!this->m_isRobtopSong && this->m_showDownloadBtn); //If only robtop song then no delete for now :3
-			this->m_downloadBtn->setVisible(false);
+			if (!this->m_showSelectSongBtn) {
+				this->m_deleteBtn->setVisible(!this->m_isRobtopSong && this->m_showDownloadBtn); //If only robtop song then no delete for now :3
+				this->m_downloadBtn->setVisible(false);
+			}
 		}
 		if (this->m_isMusicLibrary) {
 			//geode::log::debug("isMusicLibrary");
